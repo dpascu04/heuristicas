@@ -11,7 +11,7 @@ def N(T):
 
 def C(data):
     """Función de coste asociada al problema de la mochila."""
-    return sum(data)
+    return -sum(data)
 
 def temple_simulado(sort_data,peso_tot,data):
     start = time.time()
