@@ -1,4 +1,4 @@
-from numpy import exp
+import numpy as np
 from src.algoritmos.greedy import greedy_mochila
 from src.algoritmos.busqueda_local import busqueda_local
 import time
@@ -17,7 +17,6 @@ def temple_simulado(sort_data,peso_tot,data):
     solucion = greedy_mochila(sort_data, peso_tot, data, False)
     solucion_start = solucion
     t = 12345
-    u = 0
     while t > 0:
         n = 0
         while n <= N(t):
@@ -28,7 +27,8 @@ def temple_simulado(sort_data,peso_tot,data):
                 if C(solucion) < C(solucion_start):
                     solucion_start = solucion
             else:
-                if u < exp(-delta/t):
+                u = np.random.uniform(0,1)
+                if u < np.exp(-delta/t):
                     solucion = solucion_bus
             n = n + 1
         t = t - 1
