@@ -1,0 +1,30 @@
+def VND(sort_data,peso_tot,data):
+    """Búsqueda Descendente"""
+    
+    S,elem = greedy_mochila(sort_data,peso_tot,data)
+    j = 1
+    
+    while(j <= j_A):
+        S_prima, peso_m = busqueda_local(S,peso_tot)
+        if C(S_prima) < C(S):
+            S = S_prima
+            j = 1
+        else: 
+            j = j + 1
+return S
+
+def GVNS(sort_data,peso_tot,data):
+    """Búsqueda en Entorno Variable General"""
+    
+    S,elem = greedy_mochila(sort_data,peso_tot,data)
+    n = 1
+    
+    S_segunda = VND(sort_data,peso_tot,S_prima)
+    while(n < n_max and C(S_segunda) < C(S)):
+        j = 1
+        while(j < j_B):
+            S = S_segunda
+            S_segunda = VND(sort_data,peso_tot,S_prima)
+            j = j + 1
+        n = n + 1
+return S
